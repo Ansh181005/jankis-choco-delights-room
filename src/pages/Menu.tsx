@@ -64,9 +64,24 @@ const Menu = () => {
             <div className="space-y-12">
               {Object.entries(groupedChocolates).map(([category, items]) => (
                 <div key={category} className="animate-fade-in">
-                  <h2 className="text-2xl md:text-3xl font-playfair font-bold text-chocolate-900 mb-8 text-center">
-                    {getCategoryTitle(category)}
-                  </h2>
+                  {category === 'dark' ? (
+                    <div className="mb-8 text-center">
+                      <h2 className="text-2xl md:text-3xl font-playfair font-bold text-chocolate-900 mb-6">
+                        {getCategoryTitle(category)}
+                      </h2>
+                      <div className="flex justify-center mb-6">
+                        <img 
+                          src="/lovable-uploads/3f03d5e5-45d7-487c-970e-b9c56ad39eb1.png" 
+                          alt="Premium dark chocolate collection" 
+                          className="w-64 h-64 object-cover rounded-lg shadow-lg"
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <h2 className="text-2xl md:text-3xl font-playfair font-bold text-chocolate-900 mb-8 text-center">
+                      {getCategoryTitle(category)}
+                    </h2>
+                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {items.map((chocolate, index) => (
                       <div 
