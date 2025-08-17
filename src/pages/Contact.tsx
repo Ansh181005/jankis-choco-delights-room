@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,7 +7,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -16,52 +14,49 @@ const Contact = () => {
     phone: '',
     message: ''
   });
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     try {
-      const { error } = await supabase
-        .from('contacts')
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone || null,
-            message: formData.message
-          }
-        ]);
-
+      const {
+        error
+      } = await supabase.from('contacts').insert([{
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || null,
+        message: formData.message
+      }]);
       if (error) {
         throw error;
       }
-
       toast({
         title: "Message Sent!",
-        description: "Thank you for contacting us. We'll get back to you soon!",
+        description: "Thank you for contacting us. We'll get back to you soon!"
       });
-
-      setFormData({ name: '', email: '', phone: '', message: '' });
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
     } catch (error) {
       console.error('Error sending message:', error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
-        variant: "destructive",
+        variant: "destructive"
       });
     }
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-chocolate-50 via-white to-gold-50">
+  return <div className="min-h-screen bg-gradient-to-br from-chocolate-50 via-white to-gold-50">
       <Navigation />
       
       {/* Hero Section */}
@@ -110,21 +105,9 @@ const Contact = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="hover-scale transition-all duration-300 hover:shadow-lg">
-                  <CardContent className="p-6 text-center">
-                    <MapPin className="w-8 h-8 text-gold-600 mx-auto mb-3" />
-                    <h3 className="font-semibold text-chocolate-900 mb-2">Location</h3>
-                    <p className="text-chocolate-600">Sweet Street, Chocolate City</p>
-                  </CardContent>
-                </Card>
+                
 
-                <Card className="hover-scale transition-all duration-300 hover:shadow-lg">
-                  <CardContent className="p-6 text-center">
-                    <Clock className="w-8 h-8 text-gold-600 mx-auto mb-3" />
-                    <h3 className="font-semibold text-chocolate-900 mb-2">Hours</h3>
-                    <p className="text-chocolate-600">Mon-Sun: 9AM-9PM</p>
-                  </CardContent>
-                </Card>
+                
               </div>
             </div>
 
@@ -138,56 +121,22 @@ const Contact = () => {
               <CardContent className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <Input
-                      type="text"
-                      name="name"
-                      placeholder="Your Name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="bg-chocolate-50 border-chocolate-200 focus:border-gold-500"
-                    />
+                    <Input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required className="bg-chocolate-50 border-chocolate-200 focus:border-gold-500" />
                   </div>
                   
                   <div>
-                    <Input
-                      type="email"
-                      name="email"
-                      placeholder="Your Email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="bg-chocolate-50 border-chocolate-200 focus:border-gold-500"
-                    />
+                    <Input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required className="bg-chocolate-50 border-chocolate-200 focus:border-gold-500" />
                   </div>
                   
                   <div>
-                    <Input
-                      type="tel"
-                      name="phone"
-                      placeholder="Your Phone Number"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="bg-chocolate-50 border-chocolate-200 focus:border-gold-500"
-                    />
+                    <Input type="tel" name="phone" placeholder="Your Phone Number" value={formData.phone} onChange={handleChange} className="bg-chocolate-50 border-chocolate-200 focus:border-gold-500" />
                   </div>
                   
                   <div>
-                    <Textarea
-                      name="message"
-                      placeholder="Your Message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="bg-chocolate-50 border-chocolate-200 focus:border-gold-500"
-                    />
+                    <Textarea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} required rows={5} className="bg-chocolate-50 border-chocolate-200 focus:border-gold-500" />
                   </div>
                   
-                  <Button 
-                    type="submit"
-                    className="w-full bg-chocolate-800 hover:bg-chocolate-700 text-white py-3 text-lg hover-scale transition-all duration-300"
-                  >
+                  <Button type="submit" className="w-full bg-chocolate-800 hover:bg-chocolate-700 text-white py-3 text-lg hover-scale transition-all duration-300">
                     Send Message
                   </Button>
                 </form>
@@ -223,8 +172,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Contact;
