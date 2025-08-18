@@ -14,9 +14,11 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center">
-            <h1 className="text-2xl font-playfair font-bold text-chocolate-900">
-              Janki's Choco Room
-            </h1>
+            <img 
+              src="/lovable-uploads/8f9bba8b-4acb-4fc0-b8c2-f75d40866417.png" 
+              alt="Janki's Choco Room Logo" 
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Menu */}
