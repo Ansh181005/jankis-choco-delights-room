@@ -11,6 +11,7 @@ export interface ChocolateItem {
   };
   description: string;
   featured?: boolean;
+  image?: string;
 }
 
 export const chocolates: ChocolateItem[] = [
@@ -29,7 +30,8 @@ export const chocolates: ChocolateItem[] = [
     category: 'dark',
     prices: { '100g': 90, '500g': 400, '1kg': 800 },
     description: 'Premium dark chocolate infused with crunchy roasted almonds',
-    featured: true
+    featured: true,
+    image: '/lovable-uploads/86b34c6b-b29f-45e8-96c6-1b3e929632fc.png'
   },
   {
     id: 'dark-mix-dryfruit',

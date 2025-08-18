@@ -12,6 +12,16 @@ const ProductCard = ({ chocolate }: ProductCardProps) => {
     <Card className="group hover-scale bg-white shadow-lg hover:shadow-xl transition-all duration-300 border-0 overflow-hidden">
       <div className={`h-2 bg-gradient-to-r ${getCategoryGradient(chocolate.category)}`}></div>
       
+      {chocolate.image && (
+        <div className="h-48 overflow-hidden">
+          <img 
+            src={chocolate.image} 
+            alt={chocolate.name} 
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+      )}
+      
       <CardContent className="p-6">
         <div className="flex justify-between items-start mb-3">
           <h3 className="text-lg font-semibold text-chocolate-900 group-hover:text-gold-600 transition-colors">
