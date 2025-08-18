@@ -22,7 +22,8 @@ export const chocolates: ChocolateItem[] = [
     category: 'dark',
     prices: { '100g': 80, '500g': 350, '1kg': 700 },
     description: 'Rich and intense pure dark chocolate with deep cocoa flavors',
-    featured: true
+    featured: true,
+    image: '/lovable-uploads/33f3402c-8f8e-46e4-a3fb-b6373f310e66.png'
   },
   {
     id: 'dark-almonds',
